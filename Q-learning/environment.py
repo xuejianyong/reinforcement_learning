@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import time
 import numpy as np
 import tkinter as tk
@@ -10,10 +12,10 @@ HEIGHT = 5
 WIDTH = 5
 
 
-class Env(tk.Tk):
-    def __init__(self):
+class Env(tk.Tk, object):
+    def __init__(self):#构造函数，创建了类的实例时就会调用这个方法
         super(Env, self).__init__()
-        self.action_space = ['u', 'd', 'l', 'r']
+        self.action_space = ['u', 'd', 'l', 'r']#up down left right
         self.n_actions = len(self.action_space)
         self.title('Q Learning')
         self.geometry('{0}x{1}'.format(HEIGHT * UNIT, HEIGHT * UNIT))
@@ -74,7 +76,7 @@ class Env(tk.Tk):
     def print_value_all(self, q_table):
         for i in self.texts:
             self.canvas.delete(i)
-        self.texts.clear()
+        self.texts = []
         for i in range(HEIGHT):
             for j in range(WIDTH):
                 for action in range(0, 4):
