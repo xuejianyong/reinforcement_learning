@@ -4,7 +4,7 @@ import numpy as np
 import random
 from environment import Env
 from collections import defaultdict
-
+import time
 
 class QLearningAgent:
     def __init__(self, actions):
@@ -24,7 +24,7 @@ class QLearningAgent:
 
     # 从Q-table中选取动作
     def get_action(self, state):
-        if np.random.rand() < self.epsilon:
+        if np.random.rand() < self.epsilon:#0.1
             # 贪婪策略随机探索动作
             action = np.random.choice(self.actions)
         else:
@@ -52,6 +52,7 @@ if __name__ == "__main__":
     agent = QLearningAgent(actions=list(range(env.n_actions)))
     for episode in range(1000):
         state = env.reset()
+        print "episode: %d" % episode
         while True:
             env.render()
             # agent产生动作

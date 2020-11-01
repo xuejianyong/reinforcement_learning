@@ -143,5 +143,5 @@ class Env(tk.Tk, object):
 
     # 渲染环境
     def render(self):
-        time.sleep(0.03)
+        time.sleep(0.05)
         self.update()
